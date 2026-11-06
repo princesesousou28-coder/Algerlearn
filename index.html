@@ -270,6 +270,23 @@ $("#del").onclick=async()=>{
   }catch(e){fail(e)}
 };
 draw();
-</script>
-</body>
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js";
+
+      const firebaseConfig = {
+        apiKey: "AIzaSyBiVJR6-rDMv-bm-88GrDCAsEUAHcdNYf4",
+        authDomain: "algerlearn.firebaseapp.com",
+        projectId: "algerlearn",
+        storageBucket: "algerlearn.firebasestorage.app",
+        messagingSenderId: "559883349961",
+        appId: "1:559883349961:web:c9a2be8476b47f444bc218",
+        measurementId: "G-SPRQ42RRWK"
+      };
+
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+     </script>
+  </body>
 </html>
+
