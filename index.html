@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#08080D">
+<link rel="icon" href="icons/favicon.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="description" content="منهجك الجزائري، تركيزك، وذكاؤك الدراسي في مساحة واحدة.">
+<title>المنصة التعليمية الجزائرية</title>
+<link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#08080D;--card:#12121B;--in:#1A1A27;--line:#262636;--txt:#E7E5F0;--mut:#8D8BA3;--acc:#A398D4;--bad:#D07A7C;--g1:#243553;--g2:#52396F}
+*{box-sizing:border-box;margin:0}
+body{background:radial-gradient(120% 55% at 50% 0,#15121F 0,var(--bg) 70%) fixed;color:var(--txt);font:400 16px/1.7 "Readex Pro",system-ui,sans-serif;padding:env(safe-area-inset-top) 16px calc(24px + env(safe-area-inset-bottom))}
+main,.col{display:flex;flex-direction:column;gap:16px}
+main{max-width:560px;margin:auto;padding-block:16px}
+section{background:linear-gradient(165deg,#15151F,#10101A);border:1px solid var(--line);border-radius:18px;padding:16px;display:flex;flex-direction:column;gap:12px}
+.hero{box-shadow:0 0 70px -28px rgba(120,90,170,.5)}
+h1{font-size:24px;line-height:1.4}h2{font-size:17px}
+#login{text-align:center;align-items:center}
+.lg{width:96px;height:96px;border-radius:24px}.sm{width:44px;height:44px;border-radius:12px}
+.head h1{font-size:18px}
+a{color:var(--acc)}
+button,select,input:not([type=checkbox]),textarea{font:inherit;color:inherit;background:var(--in);border:1px solid var(--line);border-radius:12px;padding:10px 14px;min-height:44px;width:100%}
+button{cursor:pointer;background:linear-gradient(to right,var(--g1),var(--g2));color:#F1EFF8;border:1px solid rgba(255,255,255,.3);font-weight:600}
+button:disabled{opacity:.4}
+button.g{background:transparent;color:var(--txt);border:1px solid var(--line)}
+button.d{background:transparent;color:var(--bad);border:1px solid var(--bad)}
+input[type=checkbox]{width:22px;height:22px;accent-color:#8A64B0;flex:none}
+:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+.mut{color:var(--mut);font-size:14px}
+.row{display:flex;gap:8px;align-items:center}.row>*{width:auto}.row>.f{flex:1}
+.ring{position:relative;width:220px;height:220px;margin:4px auto}
+.ring svg{transform:rotate(-90deg);filter:drop-shadow(0 0 6px rgba(138,100,176,.3))}
+.ring circle:last-child{transition:stroke-dashoffset .3s linear}
+.ring b{position:absolute;inset:0;display:grid;place-items:center;font-size:44px;font-weight:700;direction:ltr;font-variant-numeric:tabular-nums}
+.bar{height:8px;background:var(--in);border-radius:8px;overflow:hidden;margin-top:4px}
+.bar i{display:block;height:100%;background:linear-gradient(to right,#3C5A8F,#8A64B0)}
+dialog{background:var(--card);color:var(--txt);border:1px solid var(--line);border-radius:18px;padding:16px;width:min(92vw,520px);margin:auto}
+dialog[open]{display:flex;flex-direction:column;gap:12px}
+dialog::backdrop{background:#000a}
+#t{position:fixed;inset:auto 16px calc(16px + env(safe-area-inset-bottom));background:#2a2a3a;padding:12px 16px;border-radius:12px;text-align:center}
+[hidden]{display:none!important}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<main>
+<section id="login" hidden>
+  <img class="lg" src="icons/icon-192.png" alt="" width="96" height="96">
+  <h1>المنصة التعليمية الجزائرية</h1>
+  <p class="mut">منهجك الجزائري، تركيزك، وذكاؤك الدراسي في مساحة واحدة.</p>
+  <button id="in">الدخول بحساب Google</button>
+</section>
+
+<section id="consent" hidden>
+  <h2>قبل أن تبدأ</h2>
+  <p class="mut">نحفظ مستواك ودروسك وجلسات تركيزك فقط، في مساحة خاصة بحسابك لا يراها غيرك. لا نحفظ اسمك ولا بريدك في قاعدة البيانات.</p>
+  <label class="row"><input type="checkbox" id="ok"><span class="f">أوافق على <a href="#" data-d="priv">سياسة الخصوصية</a></span></label>
+  <button id="go" disabled>ابدأ</button>
+</section>
+
+<div id="home" class="col" hidden>
+  <div class="row head"><img class="sm" src="icons/icon-192.png" alt="" width="44" height="44"><h1 class="f">المنصة التعليمية الجزائرية</h1></div>
+  <section class="hero">
+    <select id="sub" aria-label="المادة"></select>
+    <div class="ring">
+      <svg viewBox="0 0 100 100" width="220" height="220"><defs><linearGradient id="gr" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#3C5A8F"/><stop offset="1" stop-color="#8A64B0"/></linearGradient></defs><circle cx="50" cy="50" r="45" fill="none" stroke="#232334" stroke-width="5"/><circle id="rg" cx="50" cy="50" r="45" fill="none" stroke="url(#gr)" stroke-width="5" stroke-linecap="round" stroke-dasharray="282.74" stroke-dashoffset="0"/></svg>
+      <b id="tt">25:00</b>
+    </div>
+    <p id="md" class="mut" style="text-align:center">وقت التركيز</p>
+    <div class="row"><button id="sp" class="f">ابدأ</button><button id="rs" class="g">إعادة</button></div>
+    <p id="st1" class="mut"></p><p id="st2" class="mut"></p>
+  </section>
+
+  <section>
+    <h2>الأولى بالمراجعة</h2>
+    <p id="sug"></p>
+  </section>
+
+  <section>
+    <h2>تقدّمك في المنهج</h2>
+    <div id="prog" class="col"></div>
+  </section>
+
+  <section>
+    <h2 id="lt">الدروس</h2>
+    <div id="ls" class="col"></div>
+    <input id="nt" maxlength="120" placeholder="عنوان درس جديد">
+    <button id="addb">أضف الدرس</button>
+  </section>
+
+  <section>
+    <h2>مستواك والامتحان</h2>
+    <select id="lv" aria-label="المستوى"></select>
+    <input id="ex" type="date" aria-label="تاريخ الامتحان">
+    <p id="cd" class="mut"></p>
+  </section>
+
+  <section>
+    <h2>الحساب</h2>
+    <button class="g" data-d="priv">سياسة الخصوصية</button>
+    <button class="g" data-d="rep">إبلاغ عن محتوى</button>
+    <button class="g" id="out">تسجيل الخروج</button>
+    <button class="d" id="del">حذف الحساب نهائيا</button>
+  </section>
+</div>
+</main>
+
+<dialog id="priv">
+  <h2>سياسة الخصوصية</h2>
+  <p class="mut">نجمع فقط ما يلزم لتعمل المنصة: مستواك الدراسي، تاريخ امتحانك، دروسك، وجلسات تركيزك. تُحفظ في مساحة معزولة بحسابك، ولا يقرأها أي مستخدم آخر.</p>
+  <p class="mut">لا نبيع بياناتك ولا نشاركها. لا نحفظ اسمك أو بريدك في قاعدة البيانات؛ يحتفظ Google بمعرّف الدخول والبريد لتسجيل الدخول فقط حتى تحذف حسابك.</p>
+  <p class="mut">تنتقل البيانات عبر HTTPS وتُشفَّر أثناء التخزين لدى Google Cloud. يمكنك حذف حسابك وكل بياناتك نهائيا في أي وقت من قسم «الحساب». البلاغات لا تتضمن هويتك.</p>
+  <form method="dialog"><button class="g">إغلاق</button></form>
+</dialog>
+
+<dialog id="rep">
+  <h2>إبلاغ</h2>
+  <select id="rt" aria-label="سبب البلاغ">
+    <option>نص أو صورة يُشتبه أنها مولّدة بالذكاء الاصطناعي</option>
+    <option>محتوى غير ملائم</option>
+    <option>مشكلة أخرى</option>
+  </select>
+  <textarea id="rr" maxlength="300" rows="4" placeholder="تفاصيل اختيارية (300 حرف)"></textarea>
+  <button id="rsend">أرسل البلاغ</button>
+  <form method="dialog"><button class="g">إلغاء</button></form>
+</dialog>
+
+<div id="t" role="status" hidden></div>
+
+<script type="module">
+import{initializeApp}from"https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
+import{getAuth,GoogleAuthProvider,signInWithPopup,signOut,onAuthStateChanged,reauthenticateWithPopup,deleteUser}from"https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
+import{getFirestore,doc,getDoc,setDoc,updateDoc,deleteDoc,addDoc,getDocs,collection,onSnapshot,query,where,writeBatch,serverTimestamp}from"https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
+
+// الصق إعدادات Firebase هنا (Project settings > Web app). هذه القيم ليست أسرارا؛ الحماية تأتي من firestore.rules
+const app=initializeApp({apiKey:"YOUR_API_KEY",authDomain:"YOUR_PROJECT.firebaseapp.com",projectId:"YOUR_PROJECT",appId:"YOUR_APP_ID"});
+const auth=getAuth(app),db=getFirestore(app);
+
+const ST={
+p:["ابتدائي",5,["اللغة العربية","الرياضيات","التربية الإسلامية","اللغة الفرنسية","التربية العلمية"]],
+m:["متوسط",4,["اللغة العربية","الرياضيات","العلوم الطبيعية","الفيزياء","اللغة الفرنسية","اللغة الإنجليزية","التاريخ والجغرافيا","التربية الإسلامية"]],
+s:["ثانوي",3,["اللغة العربية","الرياضيات","العلوم الفيزيائية","علوم الطبيعة والحياة","الفلسفة","اللغة الفرنسية","اللغة الإنجليزية","التاريخ والجغرافيا","العلوم الإسلامية"]]};
+const $=s=>document.querySelector(s);
+const day=(d=new Date())=>d.toLocaleDateString("sv");
+const ago=n=>day(new Date(Date.now()-n*864e5));
+const sum=a=>a.reduce((n,s)=>n+s.min,0);
+const h=(t,a={},...c)=>{const e=document.createElement(t);for(const k in a)k.startsWith("on")?e[k]=a[k]:e.setAttribute(k,a[k]);e.append(...c);return e};
+const toast=m=>{const t=$("#t");t.textContent=m;t.hidden=false;setTimeout(()=>t.hidden=true,3500)};
+const fail=e=>{console.error(e?.code);toast("حدث خطأ. أعد المحاولة.")};
+
+let U,P,lessons=[],sessions=[],unsubs=[];
+const unsub=()=>{unsubs.forEach(f=>f());unsubs=[]};
+
+for(const k in ST)for(let i=1;i<=ST[k][1];i++)$("#lv").add(new Option(`السنة ${i} ${ST[k][0]}`,k+i));
+document.addEventListener("click",e=>{const d=e.target.closest("[data-d]");if(d){e.preventDefault();$("#"+d.dataset.d).showModal()}});
+
+// ---- الدخول والموافقة
+$("#in").onclick=()=>signInWithPopup(auth,new GoogleAuthProvider()).catch(fail);
+$("#out").onclick=()=>signOut(auth);
+onAuthStateChanged(auth,async u=>{
+  unsub();U=u;P=null;
+  for(const id of["login","consent","home"])$("#"+id).hidden=true;
+  if(!u){$("#login").hidden=false;return}
+  try{
+    const s=await getDoc(doc(db,"users",u.uid));
+    if(!s.exists()){$("#consent").hidden=false;return}
+    P=s.data();start();
+  }catch(e){fail(e)}
+});
+$("#ok").onchange=e=>$("#go").disabled=!e.target.checked;
+$("#go").onclick=async()=>{
+  try{await setDoc(doc(db,"users",U.uid),{level:"s3",exam:"",consentAt:serverTimestamp()});
+  P={level:"s3",exam:""};$("#consent").hidden=true;start()}catch(e){fail(e)}
+};
+
+// ---- البيانات (كل مستخدم داخل users/{uid} فقط)
+function start(){
+  $("#home").hidden=false;
+  const u=doc(db,"users",U.uid);
+  unsubs.push(
+    onSnapshot(collection(u,"lessons"),s=>{lessons=s.docs.map(d=>({id:d.id,...d.data()}));render()},fail),
+    onSnapshot(query(collection(u,"sessions"),where("day",">=",ago(30))),s=>{sessions=s.docs.map(d=>d.data());render()},fail)
+  );
+  render();
+}
+const save=async o=>{try{await updateDoc(doc(db,"users",U.uid),o);Object.assign(P,o);render()}catch(e){fail(e)}};
+$("#lv").onchange=()=>save({level:$("#lv").value});
+$("#ex").onchange=()=>save({exam:$("#ex").value});
+$("#sub").onchange=()=>render();
+
+function render(){
+  if(!P)return;
+  const S=ST[P.level[0]][2],t=day(),sel=$("#sub");
+  if(sel.dataset.l!==P.level){const c=sel.value;sel.replaceChildren(...S.map(s=>new Option(s,s)));sel.value=S.includes(c)?c:S[0];sel.dataset.l=P.level}
+  $("#lv").value=P.level;$("#ex").value=P.exam||"";
+  const n=P.exam?Math.ceil((new Date(P.exam)-new Date(t))/864e5):null;
+  $("#cd").textContent=n==null?"حدّد تاريخ امتحانك لتظهر المدة المتبقية.":n>=0?`باقي ${n} يوم على الامتحان.`:"انتهى موعد الامتحان.";
+
+  const w=sessions.filter(s=>s.day>=ago(6)),days=new Set(sessions.map(s=>s.day)),d=new Date();
+  if(!days.has(day(d)))d.setDate(d.getDate()-1);
+  let k=0;for(;days.has(day(d));d.setDate(d.getDate()-1))k++;
+  $("#st1").textContent=`اليوم: ${sum(sessions.filter(s=>s.day==t))} دقيقة تركيز`;
+  $("#st2").textContent=`أيام متتالية من الدراسة: ${k}`;
+
+  const sc=S.map(s=>{const p=lessons.filter(x=>x.subject==s&&!x.done).length,m=sum(w.filter(x=>x.subject==s));return{s,p,m,v:(p||.1)/(1+m/30)}}).sort((a,b)=>b.v-a.v)[0];
+  $("#sug").textContent=`${sc.s}: ${sc.p} دروس متبقية، و${sc.m} دقيقة فقط هذا الأسبوع.`;
+
+  $("#prog").replaceChildren(...S.map(s=>{
+    const l=lessons.filter(x=>x.subject==s),dn=l.filter(x=>x.done).length,p=l.length?Math.round(dn/l.length*100):0;
+    return h("div",{},h("div",{class:"row"},h("span",{class:"f"},s),h("span",{class:"mut"},`${dn}/${l.length}`)),h("div",{class:"bar"},h("i",{style:`width:${p}%`})));
+  }));
+
+  const sub=sel.value,ls=lessons.filter(x=>x.subject==sub);
+  $("#lt").textContent="دروس "+sub;
+  $("#ls").replaceChildren(...(ls.length?ls.map(x=>{
+    const c=h("input",{type:"checkbox","aria-label":"تم إنجاز الدرس"});c.checked=x.done;
+    const r=doc(db,"users",U.uid,"lessons",x.id);
+    c.onchange=()=>updateDoc(r,{done:c.checked}).catch(fail);
+    return h("div",{class:"row"},c,h("span",{class:"f"},x.title),h("button",{class:"g",onclick:()=>deleteDoc(r).catch(fail)},"حذف"));
+  }):[h("p",{class:"mut"},"لا دروس بعد. أضف أول درس لهذه المادة.")]));
+}
+
+$("#addb").onclick=async()=>{
+  const i=$("#nt"),v=i.value.trim().slice(0,120);if(!v)return;
+  try{await addDoc(collection(db,"users",U.uid,"lessons"),{subject:$("#sub").value,title:v,done:false});i.value=""}catch(e){fail(e)}
+};
+
+// ---- مؤقت التركيز (25/5)
+const D={f:1500e3,b:300e3};let mode="f",left=D.f,end=0,tm=0;
+function draw(){
+  const m=Math.max(0,left),p=n=>String(n).padStart(2,"0");
+  $("#tt").textContent=`${p(Math.floor(m/6e4))}:${p(Math.floor(m/1e3)%60)}`;
+  $("#rg").style.strokeDashoffset=282.74*(1-m/D[mode]);
+  $("#md").textContent=mode=="f"?"وقت التركيز":"وقت الاستراحة";
+}
+async function tick(){
+  left=end-Date.now();draw();if(left>0)return;
+  clearInterval(tm);tm=0;navigator.vibrate?.(300);
+  if(mode=="f")try{await addDoc(collection(db,"users",U.uid,"sessions"),{subject:$("#sub").value,min:25,day:day()})}catch(e){fail(e)}
+  mode=mode=="f"?"b":"f";left=D[mode];$("#sp").textContent="ابدأ";draw();
+}
+$("#sp").onclick=()=>{
+  if(tm){clearInterval(tm);tm=0;left=end-Date.now();$("#sp").textContent="استئناف";return}
+  end=Date.now()+left;tm=setInterval(tick,250);$("#sp").textContent="إيقاف مؤقت";
+};
+$("#rs").onclick=()=>{clearInterval(tm);tm=0;mode="f";left=D.f;$("#sp").textContent="ابدأ";draw()};
+
+// ---- الإبلاغ (بدون أي معلومات هوية)
+$("#rsend").onclick=async()=>{
+  try{await addDoc(collection(db,"reports"),{target:$("#rt").value,reason:$("#rr").value.slice(0,300),createdAt:serverTimestamp()});
+  $("#rr").value="";$("#rep").close();toast("تم إرسال البلاغ")}catch(e){fail(e)}
+};
+
+// ---- حذف الحساب نهائيا
+$("#del").onclick=async()=>{
+  if(!confirm("سيُحذف حسابك وكل بياناتك نهائيا ولا يمكن التراجع. متابعة؟"))return;
+  try{
+    await reauthenticateWithPopup(U,new GoogleAuthProvider());
+    unsub();
+    const u=doc(db,"users",U.uid);
+    for(const c of["lessons","sessions"]){
+      const s=await getDocs(collection(u,c));
+      for(let i=0;i<s.docs.length;i+=400){const b=writeBatch(db);s.docs.slice(i,i+400).forEach(d=>b.delete(d.ref));await b.commit()}
+    }
+    await deleteDoc(u);await deleteUser(U);
+  }catch(e){fail(e)}
+};
+draw();
+</script>
+</body>
+</html>
